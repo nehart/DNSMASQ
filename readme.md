@@ -6,7 +6,7 @@
 
 <br>
 
-#### INSTALLATION
+## INSTALLATION
 
 It is essential that each command is executed with root privileges.
 
@@ -58,7 +58,7 @@ It is now possible to exit the shell with root privileges.
 exit
 ```
 
-#### UPDATE
+## UPDATE
 
 If you already have an existing `DNSMASQ` container running and wish to update the image to the latest version available on `https://gitlab.ans.co.at`, use the following commands.
 
@@ -94,7 +94,7 @@ docker compose up -d
 exit
 ``` 
 
-#### CONTRIBUTION
+## CONTRIBUTION
 
 In order to work on the `DNSMASQ` project, it is first necessary to clone this repository.
 
