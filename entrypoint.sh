@@ -9,6 +9,16 @@
 # ##################
 #
 
+#
+# SOURCES ...
+#
+#  > https://thekelleys.org.uk/dnsmasq/doc.html
+#  > https://github.com/horihiro/simple-dns-forwarder/blob/main/dnsmasq.conf
+#  > https://github.com/jpillora/docker-dnsmasq
+#  > https://www.howtoforge.com/how-to-set-up-local-dns-with-dnsmasq-on-debian-12/
+#  > https://github.com/brav0charlie/docker-dnsmasq
+#
+
 ######################################################################################
 ######################################################################################
 
