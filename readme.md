@@ -167,10 +167,6 @@ vi dockerfile
 
 [...]
 
-vi entrypoint.sh
-
-[...]
-
 vi compose.yml
 vi env.conf
 ```
