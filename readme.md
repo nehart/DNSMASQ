@@ -8,7 +8,7 @@
 
 This repository provides a container image, DNSMASQ, which is designed to serve as a DNS PROXY with one or more upstream DNS servers. In its default configuration, DNSMASQ starts in host network mode, which allows the container to bypass the virtualised network stack. This enables the container to use the network interfaces and IP addresses of the server directly, without the need for port mapping configuration.
 
-The following tutorial was created by Norbert EHART (norbert@ehart.net) in 2024 under the CC-BY license and is based on a DEBIAN (x64) system.
+This tutorial was created by Norbert EHART (norbert@ehart.net) in 2024 under the CC-BY licence. It provides detailed instructions on the deployment, updating and contribution processes related to DNSMASQ on a DEBIAN (x64) system.
 
 ## REQUIREMENT
 
