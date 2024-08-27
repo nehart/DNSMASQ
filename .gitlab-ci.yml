@@ -1,0 +1,32 @@
+stages:
+  - 'create-docker-image'
+  - 'create-release'
+
+create-docker-image:
+  image: 'docker:latest'
+  stage: 'create-docker-image'
+  services:
+    - 'docker:dind'
+  script:
+    ##########################################################################################
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN registry.ans.co.at
+    ##########################################################################################
+    - export IMAGE_VERSION=$(cat dockerfile | grep ENV.*DNSMASQ_VERSION | cut -d " " -f2 | cut -d "=" -f2 | sed -e 's/"//g')
+    - docker build --file dockerfile --build-arg CI_COMMIT_TAG=$CI_COMMIT_TAG --tag registry.ans.co.at/docker/dnsmasq/dnsmasq:V$IMAGE_VERSION-B$CI_COMMIT_TAG .
+    - docker push registry.ans.co.at/docker/dnsmasq/dnsmasq:V$IMAGE_VERSION-B$CI_COMMIT_TAG
+    - docker build --file dockerfile --build-arg CI_COMMIT_TAG=$CI_COMMIT_TAG --tag registry.ans.co.at/docker/dnsmasq/dnsmasq:latest .
+    - docker push registry.ans.co.at/docker/dnsmasq/dnsmasq:latest
+    ##########################################################################################
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^[0-9]{10}$/'
+
+create-release:
+  image: 'registry.gitlab.com/gitlab-org/release-cli:latest'
+  stage: 'create-release'
+  script: 'echo "running create-release job"'
+  release:
+    name: '$CI_COMMIT_TAG'
+    description: 'Created with CI/CD'
+    tag_name: '$CI_COMMIT_TAG'
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^[0-9]{10}$/'

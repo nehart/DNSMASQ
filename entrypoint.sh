@@ -46,7 +46,7 @@ echo "filterwin2k" >>/etc/dnsmasq.conf
 # TERMINATING CONTAINER IF ENVIRONMENT VARIABLE $DNSMASQ_UPSTREAM_SERVERS IS NOT FOUND OR EMPTY
 #
 
-if [ -z "$DNSMASQ_UPSTREAM_SERVERS" ]
+if [ -z "${DNSMASQ_UPSTREAM_SERVERS}" ]
 then
   echo "Environment variable \$DNSMASQ_UPSTREAM_SERVERS not found!\nTerminating Container..."; exit 1
 fi

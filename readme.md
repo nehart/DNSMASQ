@@ -62,7 +62,7 @@ sudo bash
 ```
 
 ```text
-docker build --no-cache --file dockerfile --tag registry.ans.co.at/docker/wingetty/wingetty:latest .
+docker build --no-cache --file "dockerfile" --tag "registry.ans.co.at/docker/dnsmasq/dnsmasq:latest" .
 ```
 
 ```text
@@ -82,7 +82,7 @@ docker compose down
 ```
 
 ```text
-docker system prune -a
+docker system prune --all --force
 ```
 
 ```text

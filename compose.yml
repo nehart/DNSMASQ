@@ -1,0 +1,16 @@
+services:
+  wingetty:
+    container_name: "${DNSMASQ_CONTAINER_NAME:-dnsmasq}"
+    image: "registry.ans.co.at/docker/dnsmasq/dnsmasq:latest"
+    restart: "unless-stopped"
+    network_mode: "host"
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    logging:
+      driver: "journald"
+      options:
+        tag: "{{.Name}}/{{.ID}}"
+    env_file:
+      - path: "env.conf"
+        required: true

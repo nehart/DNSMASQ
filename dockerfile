@@ -25,6 +25,14 @@
 FROM debian:bookworm
 
 #
+# ###############
+# BUILD ARGUMENTS
+# ###############
+#
+
+ARG CI_COMMIT_TAG="0000000000"
+
+#
 # #################
 # IMAGE INFORMATION
 # #################
@@ -33,7 +41,7 @@ FROM debian:bookworm
 ENV DNSMASQ_IMAGE_MAINTAINER="Norbert EHART (norbert@ehart.net)"
 
 ENV DNSMASQ_VERSION="2.89"
-ENV DNSMASQ_BUILD_DATE="0000000000"
+ENV DNSMASQ_BUILD_DATE="${CI_COMMIT_TAG}"
 
 #
 # #############################
@@ -96,7 +104,7 @@ RUN apt upgrade -y
 # ###############
 #
 
-RUN apt install -y dnsmasq
+RUN apt install -y dnsmasq=2.89-1
 
 #
 # #######
@@ -117,7 +125,7 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
-CMD ["/usr/sbin/dnsmasq"]
+CMD ["/usr/sbin/dnsmasq", "--no-daemon"]
 
 ######################################################################################
 ######################################################################################
