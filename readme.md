@@ -8,11 +8,91 @@
 
 #### INSTALLATION
 
-...TBC...
+It is essential that each command is executed with root privileges.
+
+```text
+sudo bash
+```
+
+The first step is the creation of the configuration directory.
+
+```text
+mkdir -p /usr/local/etc/compose/dnsmasq
+```
+
+The remaining commands must then be executed directly from this directory.
+
+```text
+cd /usr/local/etc/compose/dnsmasq
+```
+
+The next step is the creation of the compose.yml and env.conf files.
+
+```text
+curl -fsSL --url https://gitlab.ans.co.at/docker/dnsmasq/-/raw/main/compose.yml --output compose.yml
+```
+
+```text
+curl -fsSL --url https://gitlab.ans.co.at/docker/dnsmasq/-/raw/main/env.conf --output env.conf
+```
+
+Subsequently, the env.conf file must be modified in accordance with your particular specifications.
+
+```text
+vi env.conf
+```
+
+Finally, the container can be initiated.
+
+```text
+ln -s env.conf .env
+```
+
+```text
+docker compose up -d
+```
+
+It is now possible to exit the shell with root privileges.
+
+```text
+exit
+```
 
 #### UPDATE
 
-...TBC...
+If you already have an existing `DNSMASQ` container running and wish to update the image to the latest version available on `https://gitlab.ans.co.at`, use the following commands.
+
+```text
+sudo bash
+```
+
+```text
+cd /usr/local/etc/compose/dnsmasq
+```
+
+```text
+docker compose down
+```
+
+```text
+eval $(cat env.conf | grep "DNSMASQ_" | sed -e '/^#/d' | sed -e '/^$/d'  |sed -e 's/ = /=/g')
+```
+
+```text
+tar -czvpf "/root/$DNSMASQ_CONTAINER_NAME=.$(date +%s).tar" --absolute-names "$PWD"
+```
+
+```text
+docker compose pull
+```
+
+```text
+docker compose up -d
+```
+
+```text
+exit
+``` 
 
 #### CONTRIBUTION
 
