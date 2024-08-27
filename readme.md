@@ -10,7 +10,7 @@ The container image, which is provided through this repository, is designed to s
 
 The following tutorial was created by Norbert EHART (norbert@ehart.net) in 2024 under the CC-BY license.
 
-## REQUIREMENT
+# REQUIREMENT
 
 In order to proceed with the installation process, it is necessary to have the following software components in place.
 
