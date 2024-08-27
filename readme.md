@@ -4,8 +4,6 @@
 > <a href="https://docs.fedoraproject.org/en-US/fedora-server/administration/dnsmasq" target="_blank">[fedoraproject.org]</a>
 > 
 
-<br>
-
 ## INSTALLATION
 
 It is essential that each command is executed with root privileges.
