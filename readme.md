@@ -1,8 +1,6 @@
-> 
 > DNSMASQ is a lightweight, easy-to-configure DNS forwarder and DHCP server designed to provide DNS and optionally
 > DHCP services to a small-scale network. It's particularly well-suited for resource-constrained devices like routers and firewalls.
 > <a href="https://docs.fedoraproject.org/en-US/fedora-server/administration/dnsmasq" target="_blank">[fedoraproject.org]</a>
-> 
 
 <br>
 
