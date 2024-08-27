@@ -4,6 +4,46 @@
 > <a href="https://docs.fedoraproject.org/en-US/fedora-server/administration/dnsmasq" target="_blank">[fedoraproject.org]</a>
 > 
 
+The container image, which is provided through this repository, is designed to serve as a DNS PROXY with one or more upstream DNS servers. The container start per default in host network mode, which allows the container to bypass the virtualized network stack. Consequently, the network namespace of the container is shared with the host system. This approach allows the container to use the network interfaces and IP addresses of the server directly, which eliminates the need for port mapping configuration.
+
+The following tutorial was created by Norbert EHART (norbert@ehart.net) in 2024 under the CC-BY license.
+
+## REQUIREMENT
+
+In order to proceed with the installation process, it is necessary to have the following software components in place.
+
+```text
+sudo bash
+```
+
+```text
+apt update; apt install -y apt-transport-https ca-certificates moreutils curl gnupg2 software-properties-common python3 python3-pip
+```
+
+```text
+[ -e /usr/lib/python3.11/EXTERNALLY-MANAGED ] && rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+```
+
+```text
+update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+```
+
+```text
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+
+```text
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" >/etc/apt/sources.list.d/docker.list
+```
+
+```text
+apt update; apt install -y docker-ce
+```
+
+```text
+exit
+```
+
 ## INSTALLATION
 
 It is essential that each command is executed with root privileges.
